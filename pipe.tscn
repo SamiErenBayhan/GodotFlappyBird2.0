@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://5dwnhps1vaq8" path="res://pipe.gd" id="1_78010"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_78010"]
-size = Vector2(205, 1512.0393)
+size = Vector2(195, 1512.0393)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bepn3"]
 load_path = "res://.godot/imported/Pipe.png-eed3a1b592ea7dff029ce6b2df3d9e7e.ctex"
@@ -11,17 +11,25 @@ load_path = "res://.godot/imported/Pipe.png-eed3a1b592ea7dff029ce6b2df3d9e7e.cte
 [node name="Pipe" type="Area2D" unique_id=677646760]
 script = ExtResource("1_78010")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2076650538]
-position = Vector2(828, 447.88104)
+[node name="Bottom" type="CollisionShape2D" parent="." unique_id=2076650538]
+position = Vector2(936, 636.83606)
 scale = Vector2(0.4, 0.254)
 shape = SubResource("RectangleShape2D_78010")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168057584]
-modulate = Color(0.585062, 0.585062, 0.5850621, 1)
-position = Vector2(1173.5, 1050)
-scale = Vector2(0.92083335, 1)
+[node name="Up2" type="CollisionShape2D" parent="." unique_id=863505410]
+position = Vector2(934, 38.955017)
+scale = Vector2(0.4, 0.254)
+shape = SubResource("RectangleShape2D_78010")
 
-[node name="8Afdf6b0f55c0d6" type="Sprite2D" parent="." unique_id=2083656919]
-position = Vector2(827, 446.95502)
+[node name="Bottom2" type="Sprite2D" parent="." unique_id=2083656919]
+position = Vector2(937, 633.955)
 scale = Vector2(0.36296305, 0.48422894)
 texture = SubResource("CompressedTexture2D_bepn3")
+
+[node name="Up" type="Sprite2D" parent="." unique_id=1279530985]
+position = Vector2(935, 38.955017)
+rotation = 3.1415927
+scale = Vector2(0.36296305, 0.48422894)
+texture = SubResource("CompressedTexture2D_bepn3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
