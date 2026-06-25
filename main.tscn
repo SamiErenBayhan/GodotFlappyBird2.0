@@ -1,6 +1,60 @@
 [gd_scene format=3 uid="uid://dtaha7pc27inx"]
 
 [ext_resource type="Script" uid="uid://1phijtbke0rc" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://c2sfm4226171f" path="res://bird.gd" id="2_h2yge"]
+[ext_resource type="Texture2D" uid="uid://b34nc5gyla5p" path="res://FlyingGameCharacter.png" id="3_1bvp3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(0, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_272bh"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(150, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vw27"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(300, 150, 150, 150)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kek77"]
+atlas = ExtResource("3_1bvp3")
+region = Rect2(450, 150, 150, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4c57u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7mycd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_272bh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vw27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kek77")
+}],
+"loop": true,
+"name": &"Fly",
+"speed": 16.0
+}]
 
 [node name="Main" type="Node2D" unique_id=831640532]
 script = ExtResource("1_ig7tw")
+
+[node name="Bird" type="CharacterBody2D" parent="." unique_id=496066769]
+script = ExtResource("2_h2yge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1488259915]
+shape = SubResource("CircleShape2D_lquwl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=909703965]
+texture_filter = 1
+position = Vector2(243, 219)
+sprite_frames = SubResource("SpriteFrames_4c57u")
+animation = &"Fly"
+autoplay = "Fly"
+frame_progress = 0.38479856
