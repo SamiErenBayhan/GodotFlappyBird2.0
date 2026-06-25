@@ -4,7 +4,8 @@
 [ext_resource type="Script" uid="uid://c2sfm4226171f" path="res://bird.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b34nc5gyla5p" path="res://FlyingGameCharacter.png" id="3_1bvp3"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(57, 90.00002)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
 atlas = ExtResource("3_1bvp3")
@@ -49,12 +50,21 @@ script = ExtResource("1_ig7tw")
 script = ExtResource("2_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1488259915]
-shape = SubResource("CircleShape2D_lquwl")
+position = Vector2(260, 207.5)
+rotation = -1.5707964
+shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=909703965]
 texture_filter = 1
-position = Vector2(243, 219)
+position = Vector2(250, 185.25)
+scale = Vector2(0.8533334, 0.9166667)
 sprite_frames = SubResource("SpriteFrames_4c57u")
 animation = &"Fly"
 autoplay = "Fly"
-frame_progress = 0.38479856
+frame_progress = 0.69100004
+
+[node name="Timer" type="Timer" parent="." unique_id=1066045906]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

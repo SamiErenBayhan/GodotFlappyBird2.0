@@ -1,17 +1,13 @@
 extends CharacterBody2D
-
-# Motorun hazır yerçekimi ayarını direkt bilgisayardan çekiyoruz kral:
-const GRAVITY = 980.0
-const JUMP_FORCE = -350.0
-
+	
+const GRAVITY = 1000.0
+const JUMP_FORCE = -400.0
+	
+func _unhandled_input(event):
+	if event is InputEventKey and event.pressed and event.keycode == KEY_SPACE:
+		velocity.y = JUMP_FORCE
+		print("hey")              
 func _physics_process(delta):
-	# 1. Hazır yerçekimini kuşun dikey hızına (velocity.y) her kare otomatik ekle:
 	velocity.y += GRAVITY * delta
 	
-	# 2. Zıplama kontrolü (Space'e basıldıysa):
-	if Input.is_action_pressed("ui_accept"):
-		velocity.y = JUMP_FORCE
-		
-	# 3. İŞTE MOTORUN EN BÜYÜK NİMETİ:
-	# Bu fonksiyon kuşun hızına bakar, yerçekimini ve çarpmaları arkada otomatik hesaplayıp kuşu yürütür!
 	move_and_slide()
