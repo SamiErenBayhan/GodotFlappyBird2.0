@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://dtaha7pc27inx"]
 
 [ext_resource type="Script" uid="uid://1phijtbke0rc" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://crhpvvhw4r5bg" path="res://background.jpg" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://c2sfm4226171f" path="res://bird.gd" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://b34nc5gyla5p" path="res://FlyingGameCharacter.png" id="3_1bvp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
-size = Vector2(57, 90.00002)
+size = Vector2(60.5, 63.000027)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7mycd"]
 atlas = ExtResource("3_1bvp3")
@@ -43,28 +44,81 @@ animations = [{
 "speed": 16.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(65, 62)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(358.5, 8)
+
 [node name="Main" type="Node2D" unique_id=831640532]
 script = ExtResource("1_ig7tw")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=671507637]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=837768336]
+motion_mirroring = Vector2(1100, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=217445760]
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1665910978]
+position = Vector2(581, 371.00003)
+scale = Vector2(1.44625, 1.4740001)
+texture = ExtResource("2_1bvp3")
 
 [node name="Bird" type="CharacterBody2D" parent="." unique_id=496066769]
 script = ExtResource("2_h2yge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird" unique_id=1488259915]
-position = Vector2(260, 207.5)
+position = Vector2(143.5, 310.25)
 rotation = -1.5707964
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bird" unique_id=909703965]
 texture_filter = 1
-position = Vector2(250, 185.25)
-scale = Vector2(0.8533334, 0.9166667)
+position = Vector2(138, 288.75)
+scale = Vector2(0.6133334, 0.7433333)
 sprite_frames = SubResource("SpriteFrames_4c57u")
 animation = &"Fly"
 autoplay = "Fly"
 frame_progress = 0.69100004
 
+[node name="HitBox" type="Area2D" parent="Bird" unique_id=882206013]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bird/HitBox" unique_id=734515601]
+position = Vector2(143, 310.5)
+shape = SubResource("RectangleShape2D_1bvp3")
+
 [node name="Timer" type="Timer" parent="." unique_id=1066045906]
 wait_time = 2.0
 autostart = true
+
+[node name="Floor" type="StaticBody2D" parent="." unique_id=875670926]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor" unique_id=1048733221]
+position = Vector2(178.75, 592)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=396176529]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1137157956]
+position = Vector2(182, 5)
+shape = SubResource("RectangleShape2D_lquwl")
+
+[node name="ScoreLabel" type="Label" parent="." unique_id=930195779]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 538.0
+offset_top = 20.0
+offset_right = 595.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 48
+text = "0"
+horizontal_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

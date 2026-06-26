@@ -15,6 +15,10 @@ run/main_scene="uid://dtaha7pc27inx"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="GodotFlappyBird2.0"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

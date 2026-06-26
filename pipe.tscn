@@ -8,28 +8,38 @@ size = Vector2(195, 1512.0393)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bepn3"]
 load_path = "res://.godot/imported/Pipe.png-eed3a1b592ea7dff029ce6b2df3d9e7e.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bepn3"]
+size = Vector2(73, 207.5)
+
 [node name="Pipe" type="Area2D" unique_id=677646760]
 script = ExtResource("1_78010")
 
 [node name="Bottom" type="CollisionShape2D" parent="." unique_id=2076650538]
-position = Vector2(936, 636.83606)
+position = Vector2(530, 618.83606)
 scale = Vector2(0.4, 0.254)
 shape = SubResource("RectangleShape2D_78010")
 
 [node name="Up2" type="CollisionShape2D" parent="." unique_id=863505410]
-position = Vector2(934, 38.955017)
+position = Vector2(528, 20.955017)
 scale = Vector2(0.4, 0.254)
 shape = SubResource("RectangleShape2D_78010")
 
 [node name="Bottom2" type="Sprite2D" parent="." unique_id=2083656919]
-position = Vector2(937, 633.955)
+position = Vector2(531, 615.955)
 scale = Vector2(0.36296305, 0.48422894)
 texture = SubResource("CompressedTexture2D_bepn3")
 
 [node name="Up" type="Sprite2D" parent="." unique_id=1279530985]
-position = Vector2(935, 38.955017)
+position = Vector2(529, 20.955017)
 rotation = 3.1415927
 scale = Vector2(0.36296305, 0.48422894)
 texture = SubResource("CompressedTexture2D_bepn3")
 
+[node name="ScoreArea" type="Area2D" parent="." unique_id=1052006298]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=415038810]
+position = Vector2(531, 319)
+shape = SubResource("RectangleShape2D_bepn3")
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="ScoreArea" to="." method="_on_score_area_body_entered"]
