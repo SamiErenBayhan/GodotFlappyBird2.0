@@ -7,7 +7,8 @@ var game_started = false
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_pressed() and not event.is_echo() and event.keycode == KEY_SPACE:
 		velocity.y = JUMP_FORCE   
-		
+		#$JumpSound.play()
+
 func _physics_process(delta):
 	
 	if not game_started:

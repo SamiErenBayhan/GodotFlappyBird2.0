@@ -6,7 +6,7 @@ var score = 0
 
 func _ready() -> void:
 	$Timer.stop()
-	
+
 func _process(delta):
 	
 	if not game_started and Input.is_action_just_pressed("ui_accept"):
