@@ -17,7 +17,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	var new_pipe = pipe_scene.instantiate()
-	var random_y = randf_range(-20.0, 110.0)
+	var random_y = randf_range(-100.0, 130.0)
 	new_pipe.position = Vector2(600, random_y)
 	add_child(new_pipe)
 
@@ -30,7 +30,6 @@ func start_game():
 		
 func add_score():
 	score += 1
-	print(score)
 	if has_node("ScoreLabel"):
 		$ScoreLabel.text = str(score)
 		
